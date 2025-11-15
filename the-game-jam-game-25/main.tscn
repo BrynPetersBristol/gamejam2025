@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bf1qwwl1y1f4i"]
+[gd_scene load_steps=11 format=3 uid="uid://bf1qwwl1y1f4i"]
 
 [ext_resource type="Script" uid="uid://c0lotxgkfimg" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bu07alt6vkbaq" path="res://addons/godot-xr-tools/hands/model/Hand_Glove_L.gltf" id="2_h2yge"]
@@ -17,26 +17,10 @@ uv1_triplanar = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_272bh"]
 size = Vector3(5, 1, 5)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lquwl"]
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_ig7tw")
-
-[node name="XROrigin3D" type="XROrigin3D" parent="."]
-script = ExtResource("3_lquwl")
-
-[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
-
-[node name="LeftHandController" type="XRController3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0.5)
-tracker = &"left_hand"
-
-[node name="Hand_Glove_L" parent="XROrigin3D/LeftHandController" instance=ExtResource("2_h2yge")]
-
-[node name="RightHandController" type="XRController3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
-tracker = &"right_hand"
-
-[node name="Hand_Glove_R" parent="XROrigin3D/RightHandController" instance=ExtResource("3_1bvp3")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.20829, -2.9201756)
@@ -54,3 +38,27 @@ mesh = SubResource("PlaneMesh_7mycd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_272bh")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+
+[node name="XROrigin3D" type="XROrigin3D" parent="CharacterBody3D"]
+script = ExtResource("3_lquwl")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="CharacterBody3D/XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="LeftHandController" type="XRController3D" parent="CharacterBody3D/XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0.5)
+tracker = &"left_hand"
+
+[node name="Hand_Glove_L" parent="CharacterBody3D/XROrigin3D/LeftHandController" instance=ExtResource("2_h2yge")]
+
+[node name="RightHandController" type="XRController3D" parent="CharacterBody3D/XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
+tracker = &"right_hand"
+
+[node name="Hand_Glove_R" parent="CharacterBody3D/XROrigin3D/RightHandController" instance=ExtResource("3_1bvp3")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_lquwl")
