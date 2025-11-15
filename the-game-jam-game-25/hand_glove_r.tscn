@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://c27st01arfep0"]
+
+[ext_resource type="PackedScene" uid="uid://w7th3d2hl7b5" path="res://addons/godot-xr-tools/hands/model/Hand_Glove_R.gltf" id="1_rscuu"]
+[ext_resource type="Script" uid="uid://228315kd34wf" path="res://hand_glove_r.gd" id="2_i2i7c"]
+[ext_resource type="AudioStream" uid="uid://dlm1mlsbsxbms" path="res://assets/SoundEffects/coin-coin3.ogg" id="3_hptbr"]
+
+[node name="Hand_Glove_R" instance=ExtResource("1_rscuu")]
+script = ExtResource("2_i2i7c")
+
+[node name="Shoot_Sound" type="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource("3_hptbr")
