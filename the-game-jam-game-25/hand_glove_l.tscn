@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://brx03pkq1ssta"]
+
+[ext_resource type="PackedScene" uid="uid://bu07alt6vkbaq" path="res://addons/godot-xr-tools/hands/model/Hand_Glove_L.gltf" id="1_p6nvx"]
+[ext_resource type="Script" uid="uid://b63xutc4xrv5t" path="res://hand_glove_l.gd" id="2_nrdx1"]
+
+[node name="Hand_Glove_L" instance=ExtResource("1_p6nvx")]
+script = ExtResource("2_nrdx1")
