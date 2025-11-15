@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://bf1qwwl1y1f4i"]
+
+[ext_resource type="Script" uid="uid://c0lotxgkfimg" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bu07alt6vkbaq" path="res://addons/godot-xr-tools/hands/model/Hand_Glove_L.gltf" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://w7th3d2hl7b5" path="res://addons/godot-xr-tools/hands/model/Hand_Glove_R.gltf" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://dkkaudawotg2a" path="res://character_controller.gd" id="3_lquwl"]
+[ext_resource type="Texture2D" uid="uid://ds3x7idl5e8y" path="res://textures/floor.png" id="4_1bvp3"]
+
+[sub_resource type="Environment" id="Environment_h2yge"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
+albedo_texture = ExtResource("4_1bvp3")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7mycd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_272bh"]
+size = Vector3(5, 1, 5)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_ig7tw")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+script = ExtResource("3_lquwl")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="LeftHandController" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0.5)
+tracker = &"left_hand"
+
+[node name="Hand_Glove_L" parent="XROrigin3D/LeftHandController" instance=ExtResource("2_h2yge")]
+
+[node name="RightHandController" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
+tracker = &"right_hand"
+
+[node name="Hand_Glove_R" parent="XROrigin3D/RightHandController" instance=ExtResource("3_1bvp3")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.20829, -2.9201756)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h2yge")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_lquwl")
+mesh = SubResource("PlaneMesh_7mycd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_272bh")
