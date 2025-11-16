@@ -7,21 +7,28 @@ extends CharacterBody3D
 var reached_player = false
 var collision = false
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	transform.origin.y = height
-
+	pass
+	#var rotation_transform = transform.looking_at(Vector3(player.global_transform.x, 1.7, player.global_transform.z), Vector3.UP, false)
+	#transform.basis = rotation_transform.basis * transform.basis
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	transform.origin.y = height/2
+	var vec_to_player = Vector3(player.global_position.x - global_position.x, 0.0, player.global_position.z - global_position.z)
+	var velocity = vec_to_player.normalized() * speed
+	print(reached_player)
+	print(player.global_position)
+	print(global_position)
 	if not reached_player:
-		var velocity = Vector3(min(player.transform.origin.x - transform.origin.x, speed), 0.0, min(player.transform.origin.z - transform.origin.z, speed))
+		#var velocity = Vector3(min(player.transform.origin.x - transform.origin.x, speed), 0.0, min(player.transform.origin.z - transform.origin.z, speed))
 		collision = move_and_collide(velocity)
 		#print(velocity)
-		#print(abs(transform.origin.x - player.transform.origin.x))
+		print(abs(global_position.x))
 		#print(abs(transform.origin.x - player.transform.origin.x) < 0.1)
-		if abs(transform.origin.x - player.transform.origin.x) < 0.1:
+		if abs(global_position.x) < 0.15 and abs(global_position.z) < 0.15:
 			reached_player = true
 	else:
 		collision = move_and_collide(Vector3(speed, 0.0, speed))
@@ -34,6 +41,8 @@ func _physics_process(delta):
 		player.get_node("ScreamSound").play()
 		get_parent().queue_free()
 		#print("Ouch")
+		
+	
 	
 	## create a rotation transform
 	#var rotation_transform = transform.looking_at(Vector3(player.global_transform.x, 1.7, player.global_transform.z), Vector3.UP, false)

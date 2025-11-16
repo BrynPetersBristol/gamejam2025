@@ -6,7 +6,7 @@
 [node name="SpectatorView" type="Node3D"]
 
 [node name="ThirdPersonCamera" type="Camera3D" parent="."]
-transform = Transform3D(-1, 2.7015128e-08, -8.3144e-08, -4.003675e-08, 0.70394033, 0.71025914, 7.771615e-08, 0.71025914, -0.70394033, -0.25504017, 7.0019817, -7.858824)
+transform = Transform3D(-1, -2.526796e-08, 8.369153e-08, 0, 0.9573195, 0.28903177, -8.742278e-08, 0.28903177, -0.9573195, 0, 4.677, -6.839)
 cull_mask = 1048565
 
 [node name="HMD" type="SubViewport" parent="."]
@@ -34,4 +34,3 @@ cull_mask = 1048569
 script = ExtResource("2_akgvd")
 
 [editable path="HMD/Main"]
-[editable path="HMD/Main/Enemy3"]
