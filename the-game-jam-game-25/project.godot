@@ -11,9 +11,19 @@ config_version=5
 [application]
 
 config/name="theGameJamGame25"
-run/main_scene="uid://bf1qwwl1y1f4i"
+run/main_scene="uid://b5b7q7evjm16a"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+run/main_scene.mobile=""
+
+[layer_names]
+
+3d_render/layer_1="Default"
+3d_render/layer_2="HMD only"
+3d_render/layer_3="Spectator only"
+3d_render/layer_4="First person view only"
+3d_render/main_scene="uid://b5b7q7evjm16a"
+3d_render/main_scene.mobile="uid://bf1qwwl1y1f4i"
 
 [rendering]
 
