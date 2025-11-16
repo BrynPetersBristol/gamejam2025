@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bc5vqiyccgn1l"
+path="res://.godot/imported/Game Jam 2025 Space Invaders ft. Sophia.wav-02dd1027736ff00c705d12b39a711902.sample"
+
+[deps]
+
+source_file="res://sounds/Game Jam 2025 Space Invaders ft. Sophia.wav"
+dest_files=["res://.godot/imported/Game Jam 2025 Space Invaders ft. Sophia.wav-02dd1027736ff00c705d12b39a711902.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

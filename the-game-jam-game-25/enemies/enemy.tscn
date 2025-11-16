@@ -29,4 +29,5 @@ stream = ExtResource("2_7frlh")
 volume_db = 20.0
 unit_size = 1.0
 autoplay = true
+max_distance = 20.0
 emission_angle_enabled = true

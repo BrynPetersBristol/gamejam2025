@@ -39,6 +39,7 @@ func _physics_process(delta):
 	if collision:
 		player.get_node("ImpactSound").play()
 		player.get_node("ScreamSound").play()
+		player.get_node("Audio").play()
 		get_parent().queue_free()
 		#print("Ouch")
 		
