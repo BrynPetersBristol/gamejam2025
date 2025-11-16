@@ -30,6 +30,8 @@ func _physics_process(delta):
 			get_parent().queue_free()
 			
 	if collision:
+		player.get_node("ImpactSound").play()
+		player.get_node("ScreamSound").play()
 		get_parent().queue_free()
 		#print("Ouch")
 	
